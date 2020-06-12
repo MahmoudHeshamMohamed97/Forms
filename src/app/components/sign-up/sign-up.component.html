@@ -1,0 +1,47 @@
+<section id="signUp">
+
+    <div class="w-50 p-5 form">
+
+        <form [formGroup]="signUp" (ngSubmit)="signUp.valid&&signUpFunc()" >
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input [class.is-valid]="signUp.controls.first_name.status=='VALID'" type="text" formControlName="first_name" placeholder="Enter First Name" class="form-control" />
+                        <div class="alert alert-danger text-center" *ngIf="signUp.controls.first_name.touched&&signUp.controls.first_name.errors" >
+                            Invalid Data.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input [class.is-valid]="signUp.controls.last_name.status=='VALID'" formControlName="last_name" type="text" placeholder="Enter First Name" class="form-control" />
+                        <div class="alert alert-danger text-center" *ngIf="signUp.controls.last_name.errors&&signUp.controls.last_name.touched">
+                            Invalid Data
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input [class.is-valid]="signUp.controls.email.status=='VALID'" formControlName="email" type="email" placeholder="Enter Email" class="form-control" />
+                <div class="alert alert-danger text-center" *ngIf="signUp.controls.email.errors&&signUp.controls.email.touched">
+                    Invalid Data
+                </div>
+            </div>
+            <div class="form-group">
+                <input [class.is-valid]="signUp.controls.age.status=='VALID'" formControlName="age" type="tel" placeholder="Enter Age" class="form-control" />
+                <div class="alert alert-danger text-center" *ngIf="signUp.controls.age.errors&&signUp.controls.age.touched">
+                    Invalid Data.
+                </div>
+            </div>
+            <div class="form-group">
+                <input formControlName="password" [class.is-valid]="signUp.controls.password.status=='VALID'" type="password" placeholder="Enter Password" class="form-control" />
+                <div class="alert alert-danger text-center" *ngIf="signUp.controls.password.errors&&signUp.controls.password.touched">
+                    Invalid Data.
+                </div>
+            </div>
+            <button [disabled]="signUp.status=='INVALID'" [ngStyle]="signUp.status =='INVALID'? {'background-color':'teal','border-color':'teal'} : {}" type="submit" class="btn btn-info w-100">Sign Up</button>
+        </form>
+        
+    </div>
+
+</section>
